@@ -12,12 +12,12 @@ async function createUsuarioController(request, response) {
 }
 
 async function findAllUsuarioController(request, response) {
-     try {
+    try {
         const usuarios = await usuarioService.findAllUsuarioService();
         response.status(200).send({usuarios});
-     } catch(error) {
+    } catch(error) {
         return response.status(404).send(error.message);
-     }
+    }
 }
 
 async function findUsuarioByIdController(request, response) {
