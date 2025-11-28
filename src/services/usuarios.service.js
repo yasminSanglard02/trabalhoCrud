@@ -37,9 +37,26 @@ async function updateUsuarioService(novoUsuario, id) {
     return usuarioAtualizado;
 }
 
+async function deleteUsuarioServices(id) {
+    const usuario = await usuarioRepository.findUsuarioByIdRepository(id);
+
+    if (!usuario) {
+        throw new Error("Usuario nao encontrado!");
+    }
+    
+    const mensagemRetorno = await usuarioRepository.updateUsuarioRepository(id);
+
+    if (!mensagemRetorno) {
+        throw new Error("Error ao deletar usuario!");
+    }
+    
+    return mensagemRetorno;
+}
+
 export default {
     createUsuarioService,
     findAllUsuarioService,
     findUsuarioByIdService,
-    updateUsuarioService
+    updateUsuarioService,
+    deleteUsuarioServices
 }

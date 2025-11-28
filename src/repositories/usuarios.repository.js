@@ -9,24 +9,6 @@ db.run(`
         foto TEXT
     )
 `);
-const usuarios = [
-    {
-        login: 'Lavinia20',
-        email: 'lavinia@gmail.com',
-        senha: '123094'
-    },
-    {
-        login: 'Julia',
-        email: 'julia@gmail.com',
-        senha: '123034'
-    },
-    {
-        login: 'Gabriela',
-        email: 'gabriela@gmail.com',
-        senha: '123666'
-    }
-];
-
 function createUsuarioRepository(novoUsuario) {
     return new Promise((resolve, reject) => {
 
@@ -123,10 +105,29 @@ function updateUsuarioRepository(id, usuario) {
         );
     });
 }
+function deleteUsuarioRepository(id) {
+    return new Promise((resolve, reject) => {
+        db.run(
+            `DELETE FROM usuario
+            WHERE id = ?`,
+            [id],
+            (error) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve ({
+                        message: "Usuario excluido com sucesso!"
+                        });
+                    }
+                }
+        );
+    });
+}
 
 export default {
     createUsuarioRepository,
     findUsuarioByIdRepository,
     findAllUsuarioRepository,
-    updateUsuarioRepository
+    updateUsuarioRepository,
+    deleteUsuarioRepository
 }

@@ -43,9 +43,22 @@ async function updateUsuarioController(request, response) {
     }
 }
 
+async function deleteUsuarioController(request, response) {
+
+    const {id} = request.params
+
+    try {
+        const retorno = await usuarioService.deleteProdutoService(id);
+        response.status(200).send({retorno});
+    } catch (error) {
+        response.status(400).send(error.message);
+    }
+}
+
 export default {
     createUsuarioController,
     findAllUsuarioController,
     findUsuarioByIdController,
-    updateUsuarioController
+    updateUsuarioController,
+    deleteUsuarioController
 }
