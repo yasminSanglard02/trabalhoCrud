@@ -1,4 +1,4 @@
-mport { Router } from "express";
+import { Router } from "express";
 import usuarioController from "../controller/usuario.controller.js";
 
 const router = Router();
