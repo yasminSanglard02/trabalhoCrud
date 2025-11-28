@@ -1,4 +1,4 @@
-import usuarioService from '../services/usuario.service.js';
+import usuarioService from '../services/usuarios.service.js';
 
 async function createUsuarioController(request, response) {
     const novoUsuario = request.body;
